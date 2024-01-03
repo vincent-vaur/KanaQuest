@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id             Int             @id @default(autoincrement())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  email          String          @unique
+  username       String?
+  picture        String?
+  authentication Authentication?
+  quizz          Quizz[]
+}
+
+// Store user's authentication details
+model Authentication {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  password  String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      @unique
+}
+
+// Used to store user's sessions
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String   @db.MediumText
+  expiresAt DateTime
+}
+
+enum KanaType {
+  KATAKANAS
+  HIRAGANAS
+}
+
+model Kanas {
+  id     Int      @id @default(autoincrement())
+  type   KanaType
+  kana   String   @db.TinyText
+  romaji String   @db.TinyText
+}
+
+enum QuizzType {
+  KATAKANAS
+  HIRAGANAS
+  BOTH
+}
+
+enum QuizzState {
+  RUNNING
+  CANCELLED
+  OVER
+}
+
+model Quizz {
+  id              Int        @id @default(autoincrement())
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  type            QuizzType
+  questionCount   Int
+  currentQuestion Int        @default(1)
+  currentKana     Json?
+  currentChoices  Json?
+  currentTries    Int        @default(0)
+  totalTries      Int        @default(0)
+  errorTries      Int        @default(0)
+  successTries    Int        @default(0)
+  score           Int        @default(0)
+  successRate     Int        @default(0)
+  state           QuizzState
+  user            User       @relation(fields: [userId], references: [id])
+  userId          Int
+
+  @@index([userId])
+}

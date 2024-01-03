@@ -1,0 +1,60 @@
+{% extends 'layouts/private.twig' %}
+
+{% block content %}
+  <div class="m-auto flex flex-col gap-16 items-center">
+    <h1 class="text-center">
+      <span class="text-primary">おはよう</span> {{ user.username }}
+    </h1>
+
+    <h2 class="text-2xl text-center">
+      Que souhaites-tu améliorer aujourd'hui ?
+    </h2>
+
+    <div class="p-8 flex flex-col gap-2 sm:gap-8 rounded-2xl bg-neutral-content/5">
+      <a href="/quizz/start"
+        title="Kanas"
+        class="group p-2 flex items-center gap-8 justify-start sm:justify-between rounded-full hover:bg-primary transition-all">
+        <img class="p-1 size-16 sm:size-20 rounded-full bg-neutral-content"
+          src="/images/icons/hiragana.png" />
+        <h3 class="text-xl uppercase group-hover:text-gray-800">Kanas</h3>
+        <img class="hidden sm:block p-1 size-16 sm:size-20 rounded-full bg-neutral-content"
+          src="/images/icons/hiragana.png" />
+      </a>
+
+      <div class="p-2 w-full flex items-center gap-8 justify-start sm:justify-between rounded-full cursor-not-allowed">
+        <img class="p-1 size-16 sm:size-20 rounded-full bg-neutral-content opacity-20"
+          src="/images/icons/hiragana.png" />
+        <h3 class="flex flex-col text-xl items-start sm:items-center opacity-40">
+          <span class="text-left sm:text-center uppercase">Mots</span>
+          <small class="text-xs opacity-70">Bientôt disponible</small>
+        </h3>
+        <img class="hidden sm:block p-1 size-16 sm:size-20 rounded-full bg-neutral-content opacity-20"
+          src="/images/icons/hiragana.png" />
+      </div>
+
+      <div class="p-2 w-full flex items-center gap-8 justify-start sm:justify-between rounded-full cursor-not-allowed">
+        <img class="p-1 size-16 sm:size-20 rounded-full bg-neutral-content opacity-20"
+          src="/images/icons/hiragana.png" />
+        <h3 class="flex flex-col text-xl items-start sm:items-center opacity-40">
+          <span class="text-left sm:text-center uppercase">Grammaire</span>
+          <small class="text-xs opacity-70">Bientôt disponible</small>
+        </h3>
+        <img class="hidden sm:block p-1 size-16 sm:size-20 rounded-full bg-neutral-content opacity-20"
+          src="/images/icons/hiragana.png" />
+      </div>
+
+      <div class="p-2 w-full flex items-center gap-8 sm:gap-12 justify-start sm:justify-between rounded-full cursor-not-allowed">
+        <img class="p-1 size-16 sm:size-20 rounded-full bg-neutral-content opacity-20"
+          src="/images/icons/hiragana.png" />
+        <h3 class="flex flex-col text-xl items-start sm:items-center opacity-40">
+          <span class="text-left sm:text-center uppercase">
+            Entraînement personnalisé
+          </span>
+          <small class="text-xs opacity-70">Bientôt disponible</small>
+        </h3>
+        <img class="hidden sm:block p-1 size-16 sm:size-20 rounded-full bg-neutral-content opacity-20"
+          src="/images/icons/hiragana.png" />
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+-Connexion google, facebook, etc
+-Code quand oublier le mdp
+-options auth 2 facteurs
+-Trouver serveur hébérgement site et ressources
+-Fonctionnalité amis
+-Fonctionnalité de "défis" avec classement ou on peut combattre
+des gens de notre niveau (ou une IA) sur un domaine
+-Fonctionnalité créer son quizz
+-Niveaux pour apprendre (JLPT 5,4,3,2,1)
+-ajouter la langue anglaise

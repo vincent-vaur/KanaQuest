@@ -1,0 +1,68 @@
+{% extends 'layouts/private.twig' %}
+
+{% block script_head %}
+  {{ parent() }}
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  <script src="/js/quizz-over.js"></script>
+{% endblock %}
+
+{% block script_bottom %}
+  {{ parent() }}
+
+  {% if quizz.successRate == 100 %}
+    <script>megaConfetti();</script>
+  {% elseif quizz.successRate >= 50 %}
+    <script>normalConfetti();</script>
+  {% endif %}
+{% endblock %}
+
+{% block title %}
+  Quizz Over
+{% endblock %}
+
+{% block content %}
+  <div class="m-auto items-center self-center flex flex-col gap-16">
+    <h1 class="text-4xl font-bold">
+      {% if quizz.successRate == 100 %}
+        Tu es incroyable !
+      {% elseif quizz.successRate >= 75 %}
+        Le Japon c'est pour bientôt !
+      {% elseif quizz.successRate >= 50 %}
+        Félicitations, tu progresses !
+      {% else %}
+        Tu as encore du travail !
+      {% endif %}
+    </h1>
+
+    <div class="flex flex-col sm:flex-row">
+      <div class="stat place-items-center">
+        <div class="stat-title text-2xl">Score</div>
+        <div class="stat-value text-6xl">{{ quizz.score }}</div>
+      </div>
+
+      <div class="stat place-items-center">
+        <div class="stat-title text-2xl">Taux de réussite</div>
+
+        {% if quizz.successRate >= 75 %}
+          {% set successClass = 'success' %}
+        {% elseif quizz.successRate >= 50 %}
+          {% set successClass = 'warning' %}
+        {% else %}
+          {% set successClass = 'error' %}
+        {% endif %}
+
+        <div class="stat-value text-{{ successClass }} text-6xl">
+          {{ quizz.successRate }} %
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-8">
+      <a href="/" class="btn btn-wide btn-outline">Retour</a>
+
+      <a href="/quizz/start" class="btn btn-wide btn-outline btn-primary">
+        Rejouer
+      </a>
+    </div>
+  </div>
+{% endblock %}

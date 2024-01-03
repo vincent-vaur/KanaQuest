@@ -1,0 +1,55 @@
+{% extends 'layouts/private.twig' %}
+
+{% block title %}
+  Quizz - Kanas - Options
+{% endblock %}
+
+{% block content %}
+  <div class="m-auto w-full sm:w-10/12 md:w-1/2 lg:w-96 flex flex-col gap-16">
+    <h1>Nouveau Quizz</h1>
+
+    <form method="post"
+      class="m-0 p-8 flex flex-col gap-8 rounded-2xl border border-neutral-content">
+      <div class="flex flex-col gap-4">
+        <label for="type">Que souhaites-tu travailler ?</label>
+
+        <select class="select select-bordered w-full" id="type" name="type">
+          <option value="HIRAGANAS">Mes Hiraganas</option>
+          <option value="KATAKANAS">Mes Katakanas</option>
+          <option value="BOTH">Les deux, j'assures 💪 !</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <label for="questionCount">Combien de questions souhaites-tu ?</label>
+
+        <div>
+          <input class="range"
+            name="questionCount"
+            id="questionCount"
+            type="range"
+            min="10"
+            max="40"
+            value="10"
+            step="5" />
+
+          <div class="w-full flex justify-between text-xs px-2">
+            <span>10</span>
+            <span>15</span>
+            <span>20</span>
+            <span>25</span>
+            <span>30</span>
+            <span>35</span>
+            <span>40</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-outline">Commencer</button>
+    </form>
+  </div>
+
+  {% if runningQuizzId %}
+    {% include 'partials/modal-quizz-already-run.twig' %}
+  {% endif %}
+{% endblock %}

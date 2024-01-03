@@ -1,0 +1,16 @@
+{% extends 'partials/modal-base.twig' %}
+
+{% set open = true %}
+
+{% block title %}
+  Quizz en cours !
+{% endblock %}
+
+{% block content %}
+  Il semblerait que tu ais déjà commencé un quizz ! Souhaites-tu le continuer ?
+{% endblock %}
+
+{% block actions %}
+  <button class="px-8 btn btn">Non</button>
+  <a class="px-8 btn btn-neutral" autofocus href="/quizz/run">Oui</a>
+{% endblock %}

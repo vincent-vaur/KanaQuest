@@ -1,0 +1,31 @@
+<html lang="fr" data-theme="forest">
+  <head>
+    {% block head %}
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <title>
+        {% block title %}
+          KanaQuest
+        {% endblock %}
+      </title>
+
+      <link rel="icon" type="image/png" href="/images/logo.png" />
+      <link href="/app.css" rel="stylesheet" type="text/css" />
+    {% endblock %}
+
+    {% block script_head %}{% endblock %}
+  </head>
+
+  <body class="relative flex flex-col min-h-svh">
+    {% block navbar %}{% endblock %}
+
+    <main class="px-2 sm:px-0 flex flex-col grow items-center justify-center">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include 'partials/flash-messages.twig' %}
+
+    {% block script_bottom %}{% endblock %}
+  </body>
+</html>

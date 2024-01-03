@@ -1,0 +1,17 @@
+<dialog id="modal" class="modal">
+  <div class="modal-box" data-theme="light">
+    <h3 class="font-bold text-xl">{% block title %}{% endblock %}</h3>
+
+    <p class="py-4">{% block content %}{% endblock %}</p>
+
+    <div class="modal-action text-base-100">
+      <form class="flex justify-end gap-4" method="dialog">
+        {% block actions %}{% endblock %}
+      </form>
+    </div>
+  </div>
+</dialog>
+
+{% if open %}
+  <script>modal.showModal()</script>
+{% endif %}
