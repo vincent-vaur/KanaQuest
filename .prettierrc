@@ -1,0 +1,7 @@
+{
+  "singleQuote": false,
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "plugins": ["./node_modules/@supersoniks/prettier-plugin-twig-melody"]
+}
