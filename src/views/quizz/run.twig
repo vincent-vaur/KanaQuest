@@ -1,40 +1,46 @@
-{% extends 'layouts/private.twig' %}
-
-{% block title %}
-  Quizz en cours
-{% endblock %}
-
-{% block content %}
-  <div class="m-auto self-center flex flex-col gap-8">
-    <div class="flex gap-8 items-center justify-center">
-      <div class="radial-progress text-xl text-primary border border-primary/50" style="--value:{{ quizzProgress }};" role="progressbar">
-        {{ quizzProgress }} %
-      </div>
-
-      <div class="text-xl text-center">
-        <p class="text-4xl mb-1">Question <span class="font-bold text-primary">{{ quizz.currentQuestion }}</span></p>
-
-        <p>
-          {% if remainingTries > 1 %}
-            Il te reste <span class="font-bold text-success">{{ remainingTries }}</span> essais
-          {% else %}
-            <span class="text-error">Dernier essai !</span>
-          {% endif %}
-        </p>
-      </div>
+{% extends 'layouts/private.twig' %} {% block title %} Quizz en cours {%
+endblock %} {% block content %}
+<div class="m-auto self-center flex flex-col gap-8">
+  <div class="flex gap-8 items-center justify-center">
+    <div
+      class="radial-progress text-xl text-primary border border-primary/50"
+      style="--value:{{ quizzProgress }};"
+      role="progressbar"
+    >
+      {{ quizzProgress }} %
     </div>
 
-    <p class="px-8 py-2 sm:p-0 sm:size-24 rounded-xl sm:rounded-full self-center inline-flex items-center justify-center text-primary-content text-3xl bg-neutral-content animate-pulse">
-      {{ quizz.currentKana.romaji }}
-    </p>
-    
-    <div class="grid grid-cols-2 sm:grid-rows-2 sm:grid-flow-col gap-8">
-      {% for kana in quizz.currentChoices %}
-        <a href="/quizz/validate?r={{ kana.id }}"
-          class="btn btn-outline size-20 sm:size-24 rounded-full inline-flex items-center justify-center place-self-center text-xl sm:text-3xl hover:scale-110 transition-all ease-in-out duration-200 {% if kana.id == quizz.currentKana.id %}text-warning{% endif %}">
-          {{ kana.kana }}
-        </a>
-      {% endfor %}
+    <div class="text-xl text-center">
+      <p class="text-4xl mb-1">
+        Question
+        <span class="font-bold text-primary">{{ quizz.currentQuestion }}</span>
+      </p>
+
+      <p>
+        {% if remainingTries > 1 %} Il te reste
+        <span class="font-bold text-success">{{ remainingTries }}</span> essais
+        {% else %}
+        <span class="text-error">Dernier essai !</span>
+        {% endif %}
+      </p>
     </div>
   </div>
+
+  <p
+    class="px-8 py-2 sm:p-0 sm:size-24 rounded-xl sm:rounded-full self-center inline-flex items-center justify-center text-primary-content text-3xl bg-neutral-content animate-pulse"
+  >
+    {{ quizz.currentKana.romaji }}
+  </p>
+
+  <div class="grid grid-cols-2 sm:grid-rows-2 sm:grid-flow-col gap-8">
+    {% for kana in quizz.currentChoices %}
+    <a
+      href="/quizz/validate?r={{ kana.id }}"
+      class="btn btn-outline size-20 sm:size-24 rounded-full inline-flex items-center justify-center place-self-center text-xl sm:text-3xl hover:scale-110 transition-all ease-in-out duration-200"
+    >
+      {{ kana.kana }}
+    </a>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
